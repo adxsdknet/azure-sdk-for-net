@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Management.Peering.Models
     using System.Linq;
 
     /// <summary>
-    /// The essential information related to the pee's ASN.
+    /// The essential information related to the peer's ASN.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
     public partial class PeerAsn : IResource
