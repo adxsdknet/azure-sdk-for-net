@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.Security.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -43,15 +45,12 @@ namespace Microsoft.Azure.Management.Security.Models
         /// assessment</param>
         /// <param name="remediationDescription">Human readable description of
         /// what you should do to mitigate this security issue</param>
-        /// <param name="category">The category of resource that is at risk
-        /// when the assessment is unhealthy. Possible values include:
-        /// 'Compute', 'Network', 'Data', 'IdentityAndAccess', 'IoT'</param>
         /// <param name="secureScoreWeight">Weight for the security score
         /// calculation. the higher this number, this severity  of this
         /// assessment is higher</param>
         /// <param name="preview">True if this assessment is in preview release
         /// status</param>
-        public SecurityAssessmentMetadata(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string policyDefinitionId = default(string), string description = default(string), string remediationDescription = default(string), string category = default(string), int? secureScoreWeight = default(int?), bool? preview = default(bool?))
+        public SecurityAssessmentMetadata(string id = default(string), string name = default(string), string type = default(string), string displayName = default(string), string policyDefinitionId = default(string), string description = default(string), string remediationDescription = default(string), IList<string> category = default(IList<string>), int? secureScoreWeight = default(int?), IList<string> requiredPricingBundle = default(IList<string>), bool? preview = default(bool?))
             : base(id, name, type)
         {
             DisplayName = displayName;
@@ -60,6 +59,7 @@ namespace Microsoft.Azure.Management.Security.Models
             RemediationDescription = remediationDescription;
             Category = category;
             SecureScoreWeight = secureScoreWeight;
+            RequiredPricingBundle = requiredPricingBundle;
             Preview = preview;
             CustomInit();
         }
@@ -96,12 +96,9 @@ namespace Microsoft.Azure.Management.Security.Models
         public string RemediationDescription { get; private set; }
 
         /// <summary>
-        /// Gets the category of resource that is at risk when the assessment
-        /// is unhealthy. Possible values include: 'Compute', 'Network',
-        /// 'Data', 'IdentityAndAccess', 'IoT'
         /// </summary>
         [JsonProperty(PropertyName = "properties.category")]
-        public string Category { get; private set; }
+        public IList<string> Category { get; private set; }
 
         /// <summary>
         /// Gets weight for the security score calculation. the higher this
@@ -109,6 +106,11 @@ namespace Microsoft.Azure.Management.Security.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.secureScoreWeight")]
         public int? SecureScoreWeight { get; private set; }
+
+        /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.requiredPricingBundle")]
+        public IList<string> RequiredPricingBundle { get; private set; }
 
         /// <summary>
         /// Gets true if this assessment is in preview release status
