@@ -34,8 +34,9 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// <param name="lastUpdatedTime">The timestamp when the the policy was
         /// last updated.</param>
         /// <param name="status">The value that indicates whether the policy is
-        /// enabled or not.</param>
-        public RetentionPolicy(double? days = default(double?), System.DateTime? lastUpdatedTime = default(System.DateTime?), string status = default(string))
+        /// enabled or not. Possible values include: 'enabled',
+        /// 'disabled'</param>
+        public RetentionPolicy(int? days = default(int?), System.DateTime? lastUpdatedTime = default(System.DateTime?), string status = default(string))
         {
             Days = days;
             LastUpdatedTime = lastUpdatedTime;
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
         /// expires.
         /// </summary>
         [JsonProperty(PropertyName = "days")]
-        public double? Days { get; set; }
+        public int? Days { get; set; }
 
         /// <summary>
         /// Gets the timestamp when the the policy was last updated.
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Management.ContainerRegistry.Models
 
         /// <summary>
         /// Gets or sets the value that indicates whether the policy is enabled
-        /// or not.
+        /// or not. Possible values include: 'enabled', 'disabled'
         /// </summary>
         [JsonProperty(PropertyName = "status")]
         public string Status { get; set; }
